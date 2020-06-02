@@ -1,5 +1,4 @@
-map = [[0 for x in range(5)] for y in range(5)]
-print(map)
-print(map)
-print(map)
-print(map)
+from  pygame import font
+
+sss=font.render('daldjflskjfa',False,'88, 87, 86',)
+print(sss)

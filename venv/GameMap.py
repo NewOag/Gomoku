@@ -85,9 +85,11 @@ class Map():
             op_turn = 2
         else:
             op_turn = 1
-        pygame.draw.circle(screen, player_color[turn - 1], pos, radius)
+        pygame.draw.circle(screen, player_color[turn - 1], pos, radius)# width未使用
+        # 在Surface上绘制圆形。pos参数是圆的中心；radius是大小；width参数是绘制外边缘的粗细。如果宽度为零，则圆圈将被填充。
 
         msg_image = font.render(str(i), True, player_color[op_turn - 1], player_color[turn - 1])
+        # 在新Surface上绘制文本，即棋子上的序号
         msg_image_rect = msg_image.get_rect()
         msg_image_rect.center = pos
         screen.blit(msg_image, msg_image_rect)
