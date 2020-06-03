@@ -12,31 +12,31 @@ class Button():
         self.text_color = (255, 255, 255)
         self.enable = enable
         self.font = pygame.font.SysFont(None, BUTTON_HEIGHT * 2 // 3)
-
         self.rect = pygame.Rect(0, 0, self.width, self.height)
-        self.rect.topleft = (x, y)
+        self.rect.topleft = (x, y)  # 重新标定Rect的原点坐标（或者起点）
         self.text = text
         self.init_msg()
 
-    def init_msg(self):
+    def init_msg(self):  # 按钮的颜色及文字
         if self.enable:
             self.msg_image = self.font.render(self.text, True, self.text_color, self.button_color[0])
+            # render的参数（文本，抗锯齿，颜色，背景）,并且返回一个新的Surface,即为msg_image
         else:
             self.msg_image = self.font.render(self.text, True, self.text_color, self.button_color[1])
-        self.msg_image_rect = self.msg_image.get_rect()
-        self.msg_image_rect.center = self.rect.center
+        self.msg_image_rect = self.msg_image.get_rect()#获得msg_image的矩形区域并赋值给一个新变量
+        self.msg_image_rect.center = self.rect.center#让文本的center与按钮的center一致
 
-    def draw(self):
+    def draw(self):#绘制按钮
         if self.enable:
-            self.screen.fill(self.button_color[0], self.rect)
+            self.screen.fill(self.button_color[0], self.rect)#用纯色填充整个按钮(color,rect,special_flags=0),并返回被填充的Surface
         else:
             self.screen.fill(self.button_color[1], self.rect)
-        self.screen.blit(self.msg_image, self.msg_image_rect)
+        self.screen.blit(self.msg_image, self.msg_image_rect)#将文字Surface和纯色按钮Surface绘制在同一个Surface中
 
 
 class StartButton(Button):
     def __init__(self, screen, text, x, y):
-        super().__init__(screen, text, x, y, [(26, 173, 25), (158, 217, 157)], True)
+        super().__init__(screen, text, x, y, [(26, 173, 25), (158, 217, 157)], True)#调用父类的初始化方法
 
     def click(self, game):
         if self.enable:
@@ -57,7 +57,7 @@ class GiveupButton(Button):
     def __init__(self, screen, text, x, y):
         super().__init__(screen, text, x, y, [(230, 67, 64), (236, 139, 137)], False)
 
-    def click(self, game):
+    def click(self, game):#返回跟enable相同的布尔值
         if self.enable:
             game.is_play = False
             if game.winner is None:
@@ -67,7 +67,7 @@ class GiveupButton(Button):
             return True
         return False
 
-    def unclick(self):
+    def unclick(self):#返回跟enable相反的布尔值
         if not self.enable:
             self.msg_image = self.font.render(self.text, True, self.text_color, self.button_color[0])
             self.enable = True
@@ -76,9 +76,9 @@ class GiveupButton(Button):
 class Game():
     def __init__(self, caption):
         pygame.init()
-        self.screen = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
-        pygame.display.set_caption(caption)
-        self.clock = pygame.time.Clock()
+        self.screen = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])#初始化窗口或屏幕进行显示
+        pygame.display.set_caption(caption)#设置窗口标题
+        self.clock = pygame.time.Clock()#创建一个时钟（用来帮助跟踪时间）
         self.buttons = []
         self.buttons.append(StartButton(self.screen, 'Start', MAP_WIDTH + 30, 15))
         self.buttons.append(GiveupButton(self.screen, 'Giveup', MAP_WIDTH + 30, BUTTON_HEIGHT + 45))
