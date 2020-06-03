@@ -78,29 +78,33 @@ class Map():
         font = pygame.font.SysFont(None, REC_SIZE * 2 // 3)  # 第二个参数为字体大小
         for i in range(len(self.steps)):
             x, y = self.steps[i]
-        map_x, map_y, width, height = self.getMapUnitRect(x, y)
-        pos, radius = (map_x + width // 2, map_y + height // 2), CHESS_RADIUS
-        turn = self.map[y][x]
-        if turn == 1:
-            op_turn = 2
-        else:
-            op_turn = 1
-        pygame.draw.circle(screen, player_color[turn - 1], pos, radius)# width未使用
-        # 在Surface上绘制圆形。pos参数是圆的中心；radius是大小；width参数是绘制外边缘的粗细。如果宽度为零，则圆圈将被填充。
+            map_x, map_y, width, height = self.getMapUnitRect(x, y)
+            pos, radius = (map_x + width // 2, map_y + height // 2), CHESS_RADIUS
+            turn = self.map[y][x]
+            if turn == 1:
+                op_turn = 2
+            else:
+                op_turn = 1
+            pygame.draw.circle(screen, player_color[turn - 1], pos, radius)  # width未使用
+            # 在Surface上绘制圆形。pos参数是圆的中心；radius是大小；width参数是绘制外边缘的粗细。如果宽度为零，则圆圈将被填充。
 
-        msg_image = font.render(str(i), True, player_color[op_turn - 1], player_color[turn - 1])
-        # 在新Surface上绘制文本，即棋子上的序号
-        msg_image_rect = msg_image.get_rect()
-        msg_image_rect.center = pos
-        screen.blit(msg_image, msg_image_rect)
+            msg_image = font.render(str(i), True, player_color[op_turn - 1], player_color[turn - 1])
+            # 在新Surface上绘制文本，即棋子上的序号
+            msg_image_rect = msg_image.get_rect()
+            # 得到Surface的矩形区域
+            msg_image_rect.center = pos
+            screen.blit(msg_image, msg_image_rect)
+            # 将棋子的字绘制出来
 
+        # 为上一步的棋子画一个框框
         if len(self.steps) > 0:
             last_pos = self.steps[-1]
-        map_x, map_y, width, height = self.getMapUnitRect(last_pos[0], last_pos[1])
-        purple_color = (255, 0, 255)
-        point_list = [(map_x, map_y), (map_x + width, map_y),
-                      (map_x + width, map_y + height), (map_x, map_y + height)]
-        pygame.draw.lines(screen, purple_color, True, point_list, 1)
+            map_x, map_y, width, height = self.getMapUnitRect(last_pos[0], last_pos[1])
+            purple_color = (255, 0, 255)
+            point_list = [(map_x, map_y), (map_x + width, map_y),
+                          (map_x + width, map_y + height), (map_x, map_y + height), ]
+            pygame.draw.lines(screen, purple_color, 1, point_list, 3)
+            # 绘制多个连续的线段(Surface，color，closed，point_list，width)
 
     def drawBackground(self, screen):
         color = (0, 0, 0)
@@ -108,25 +112,26 @@ class Map():
             # draw a horizontal line
             start_pos, end_pos = (REC_SIZE // 2, REC_SIZE // 2 + REC_SIZE * y), (
                 MAP_WIDTH - REC_SIZE // 2, REC_SIZE // 2 + REC_SIZE * y)
-            if y == (self.height) // 2:
+            if y == (self.height) // 2:  # 画出不同宽度的线
                 width = 2
             else:
                 width = 1
             pygame.draw.line(screen, color, start_pos, end_pos, width)
 
         for x in range(self.width):
-            # draw a horizontal line
+            # draw a vertical line
             start_pos, end_pos = (REC_SIZE // 2 + REC_SIZE * x, REC_SIZE // 2), (
                 REC_SIZE // 2 + REC_SIZE * x, MAP_HEIGHT - REC_SIZE // 2)
-            if x == (self.width) // 2:
+            if x == (self.width) // 2:  # 画出不同宽度的线
                 width = 2
             else:
                 width = 1
             pygame.draw.line(screen, color, start_pos, end_pos, width)
 
-        rec_size = 8
+        # 画出中间的五个点
+        rec_size = 12
         pos = [(3, 3), (11, 3), (3, 11), (11, 11), (7, 7)]
-        for (x, y) in pos:
+        for (x, y) in pos:  # 参数(Surface,color,pos_list,width)如果width为零则矩形会被填充
             pygame.draw.rect(screen, color, (
                 REC_SIZE // 2 + x * REC_SIZE - rec_size // 2, REC_SIZE // 2 + y * REC_SIZE - rec_size // 2, rec_size,
-                rec_size))
+                rec_size), )
