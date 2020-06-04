@@ -79,34 +79,32 @@ class Game():
         self.screen = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])#初始化窗口或屏幕进行显示
         pygame.display.set_caption(caption)#设置窗口标题
         self.clock = pygame.time.Clock()#创建一个时钟（用来帮助跟踪时间）
-        self.buttons = []
-        self.buttons.append(StartButton(self.screen, 'Start', MAP_WIDTH + 30, 15))
-        self.buttons.append(GiveupButton(self.screen, 'Giveup', MAP_WIDTH + 30, BUTTON_HEIGHT + 45))
+        self.buttons = []#按钮list？？？？？？？？？？
+        self.buttons.append(StartButton(self.screen, 'Start', MAP_WIDTH + 30, 15))#添加开始按钮
+        self.buttons.append(GiveupButton(self.screen, 'Giveup', MAP_WIDTH + 30, BUTTON_HEIGHT + 45))#添加结束按钮
         self.is_play = False
-
-        self.map = Map(CHESS_LEN, CHESS_LEN)
-        self.player = MAP_ENTRY_TYPE.MAP_PLAYER_ONE
+        self.map = Map(CHESS_LEN, CHESS_LEN)#实例化一个棋盘，参数是线条数而非实际大小
+        self.player = MAP_ENTRY_TYPE.MAP_PLAYER_ONE#定义玩家？？？？？？？？？
         self.action = None
         self.winner = None
 
     def start(self):
-        self.is_play = True
-        self.player = MAP_ENTRY_TYPE.MAP_PLAYER_ONE
-        self.map.reset()
+        self.is_play = True#更改游戏状态
+        self.player = MAP_ENTRY_TYPE.MAP_PLAYER_ONE#定义玩家？？？？？？？？？
+        self.map.reset()#调用map类的函数清空棋盘
 
     def play(self):
-        self.clock.tick(60)
+        self.clock.tick(60)#最高60帧？？？？？？？
+        light_yellow = (247, 238, 214)#定义一种颜色
+        pygame.draw.rect(self.screen, light_yellow, pygame.Rect(0, 0, MAP_WIDTH, SCREEN_HEIGHT))#绘制棋盘的底色矩形
+        pygame.draw.rect(self.screen, (255, 255, 255), pygame.Rect(MAP_WIDTH, 0, INFO_WIDTH, SCREEN_HEIGHT))#绘制棋盘右侧的底色矩形
 
-        light_yellow = (247, 238, 214)
-        pygame.draw.rect(self.screen, light_yellow, pygame.Rect(0, 0, MAP_WIDTH, SCREEN_HEIGHT))
-        pygame.draw.rect(self.screen, (255, 255, 255), pygame.Rect(MAP_WIDTH, 0, INFO_WIDTH, SCREEN_HEIGHT))
-
-        for button in self.buttons:
+        for button in self.buttons:#画出按钮
             button.draw()
 
         if self.is_play and not self.isOver():
             if self.action is not None:
-                self.checkClick(self.action[0], self.action[1])
+                self.checkClick(self.action[0], self.action[1])#下棋并轮到对方下
                 self.action = None
 
             if not self.isOver():
@@ -119,8 +117,8 @@ class Game():
         self.map.drawChess(self.screen)
 
     def changeMouseShow(self):
-        map_x, map_y = pygame.mouse.get_pos()
-        x, y = self.map.MapPosToIndex(map_x, map_y)
+        map_x, map_y = pygame.mouse.get_pos()#获取鼠标的坐标
+        x, y = self.map.MapPosToIndex(map_x, map_y)#鼠标坐标变为行列序号
         if self.map.isInMap(map_x, map_y) and self.map.isEmpty(x, y):
             pygame.mouse.set_visible(False)
             light_red = (213, 90, 107)
@@ -130,8 +128,8 @@ class Game():
             pygame.mouse.set_visible(True)
 
     def checkClick(self, x, y, isAI=False):
-        self.map.click(x, y, self.player)
-        self.player = self.map.reverseTurn(self.player)
+        self.map.click(x, y, self.player)#落子
+        self.player = self.map.reverseTurn(self.player)#轮到对方下棋
 
     def mouseClick(self, map_x, map_y):
         if self.is_play and self.map.isInMap(map_x, map_y) and not self.isOver():

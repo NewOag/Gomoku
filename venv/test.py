@@ -1,10 +1,5 @@
-
-def abc():
-    enable = True
-    i=0
-    if enable:
-        enable = False
-        i=i+1
-        return True,i
-    return False,i
-print(abc())
+abc=None
+print(abc)
+abc=(1,2)
+print(abc)
+pass

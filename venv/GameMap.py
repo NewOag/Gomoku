@@ -46,7 +46,7 @@ class Map():
         else:
             return MAP_ENTRY_TYPE.MAP_PLAYER_ONE
 
-    def getMapUnitRect(self, x, y):
+    def getMapUnitRect(self, x, y):#实际坐标转换为行列序号
         map_x = x * REC_SIZE
         map_y = y * REC_SIZE
 
@@ -66,7 +66,7 @@ class Map():
     def isEmpty(self, x, y):
         return (self.map[y][x] == 0)
 
-    def click(self, x, y, type):
+    def click(self, x, y, type):#下棋
         self.map[y][x] = type.value
         self.steps.append((x, y))
 
