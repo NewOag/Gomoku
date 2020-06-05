@@ -79,7 +79,7 @@ class Game():
         self.screen = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])#初始化窗口或屏幕进行显示
         pygame.display.set_caption(caption)#设置窗口标题
         self.clock = pygame.time.Clock()#创建一个时钟（用来帮助跟踪时间）
-        self.buttons = []#按钮list？？？？？？？？？？
+        self.buttons = []#按钮list
         self.buttons.append(StartButton(self.screen, 'Start', MAP_WIDTH + 30, 15))#添加开始按钮
         self.buttons.append(GiveupButton(self.screen, 'Giveup', MAP_WIDTH + 30, BUTTON_HEIGHT + 45))#添加结束按钮
         self.is_play = False
@@ -94,7 +94,7 @@ class Game():
         self.map.reset()#调用map类的函数清空棋盘
 
     def play(self):
-        self.clock.tick(60)#最高60帧？？？？？？？
+        self.clock.tick(60)#每秒循环60次
         light_yellow = (247, 238, 214)#定义一种颜色
         pygame.draw.rect(self.screen, light_yellow, pygame.Rect(0, 0, MAP_WIDTH, SCREEN_HEIGHT))#绘制棋盘的底色矩形
         pygame.draw.rect(self.screen, (255, 255, 255), pygame.Rect(MAP_WIDTH, 0, INFO_WIDTH, SCREEN_HEIGHT))#绘制棋盘右侧的底色矩形
@@ -113,8 +113,8 @@ class Game():
         if self.isOver():
             self.showWinner()
 
-        self.map.drawBackground(self.screen)
-        self.map.drawChess(self.screen)
+        self.map.drawBackground(self.screen)#画棋盘的线
+        self.map.drawChess(self.screen)#画棋子
 
     def changeMouseShow(self):
         map_x, map_y = pygame.mouse.get_pos()#获取鼠标的坐标
@@ -131,7 +131,7 @@ class Game():
         self.map.click(x, y, self.player)#落子
         self.player = self.map.reverseTurn(self.player)#轮到对方下棋
 
-    def mouseClick(self, map_x, map_y):
+    def mouseClick(self, map_x, map_y):#当鼠标在棋盘上点击时读取出行列序号
         if self.is_play and self.map.isInMap(map_x, map_y) and not self.isOver():
             x, y = self.map.MapPosToIndex(map_x, map_y)
             if self.map.isEmpty(x, y):
@@ -145,40 +145,42 @@ class Game():
             font = pygame.font.SysFont(None, height)
             font_image = font.render(text, True, (0, 0, 255), (255, 255, 255))
             font_image_rect = font_image.get_rect()
+            font_image_rect.topleft=(location_x,locaiton_y)
             font_image_rect.x = location_x
             font_image_rect.y = locaiton_y
-            screen.blit(font_image, font_image_rect)
+            #font_image_rect.topleft = (location_x, locaiton_y)等价于上面两句
+            screen.blit(font_image, font_image_rect)#写出Winner
 
         if self.winner == MAP_ENTRY_TYPE.MAP_PLAYER_ONE:
             str = 'Winner is White'
         else:
             str = 'Winner is Black'
         showFont(self.screen, str, MAP_WIDTH + 25, SCREEN_HEIGHT - 60, 30)
-        pygame.mouse.set_visible(True)
+        pygame.mouse.set_visible(True)#返回鼠标的前一个可见状态
 
-    def click_button(self, button):
+    def click_button(self, button):#点击Start或Give up按钮后，重新绘制按钮，换掉底色
         if button.click(self):
             for tmp in self.buttons:
                 if tmp != button:
                     tmp.unclick()
 
-    def check_buttons(self, mouse_x, mouse_y):
+    def check_buttons(self, mouse_x, mouse_y):#检测鼠标是否在刚才下的棋子所在矩形内，为已经点击了的按钮更换底色
         for button in self.buttons:
             if button.rect.collidepoint(mouse_x, mouse_y):
                 self.click_button(button)
                 break
 
 
-game = Game(" Gomoku " + GAME_VERSION)
+game = Game(" Gomoku " + GAME_VERSION)#建立新游戏
 while True:
     game.play()
-    pygame.display.update()
+    pygame.display.update()#更新Surface（或者某一个区域）
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
-        elif event.type == pygame.MOUSEBUTTONDOWN:
+        elif event.type == pygame.MOUSEBUTTONDOWN:#按下鼠标
             mouse_x, mouse_y = pygame.mouse.get_pos()
             game.mouseClick(mouse_x, mouse_y)
             game.check_buttons(mouse_x, mouse_y)
