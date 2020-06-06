@@ -1,6 +1,7 @@
 import pygame
 from pygame.locals import *
 from GameMap import *
+from ChessAI import *
 
 
 class Button():
@@ -87,6 +88,8 @@ class Game():
         self.player = MAP_ENTRY_TYPE.MAP_PLAYER_ONE#定义玩家？？？？？？？？？
         self.action = None
         self.winner = None
+        self.AI=ChessAI(CHESS_LEN)
+        self.useAI=False
 
     def start(self):
         self.is_play = True#更改游戏状态
@@ -103,6 +106,11 @@ class Game():
             button.draw()
 
         if self.is_play and not self.isOver():
+            if self.useAI:
+                x,y=self.AI.findBestChess(self.map.map,self.player)
+                self.checkClick(x,y,True)
+                self.useAI=False
+
             if self.action is not None:
                 self.checkClick(self.action[0], self.action[1])#下棋并轮到对方下
                 self.action = None
@@ -129,7 +137,13 @@ class Game():
 
     def checkClick(self, x, y, isAI=False):
         self.map.click(x, y, self.player)#落子
-        self.player = self.map.reverseTurn(self.player)#轮到对方下棋
+        if self.AI.isWin(self.map.map, self.player):
+            self.winner = self.player
+            self.click_button(self.buttons[1])
+        else:
+            self.player = self.map.reverseTurn(self.player)
+            if not isAI:
+                self.useAI = True
 
     def mouseClick(self, map_x, map_y):#当鼠标在棋盘上点击时读取出行列序号
         if self.is_play and self.map.isInMap(map_x, map_y) and not self.isOver():
@@ -145,7 +159,6 @@ class Game():
             font = pygame.font.SysFont(None, height)
             font_image = font.render(text, True, (0, 0, 255), (255, 255, 255))
             font_image_rect = font_image.get_rect()
-            font_image_rect.topleft=(location_x,locaiton_y)
             font_image_rect.x = location_x
             font_image_rect.y = locaiton_y
             #font_image_rect.topleft = (location_x, locaiton_y)等价于上面两句
