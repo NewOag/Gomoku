@@ -27,8 +27,11 @@ class ChessAI():
         self.len = chess_len
         # [horizon, vertical, left diagonal, right diagonal]
         self.record = [[[0, 0, 0, 0] for x in range(chess_len)] for y in range(chess_len)]
+        #记录所有位置的四个方向是否被检测过
         self.count = [[0 for x in range(CHESS_TYPE_NUM)] for i in range(2)]
+        #记录黑棋和白棋的棋型个数统计
         self.pos_score = [[(7 - max(abs(x - 7), abs(y - 7))) for x in range(chess_len)] for y in range(chess_len)]
+        #给棋盘上每个位置设一个初始分数，越靠近棋盘中心，分数越高，用来在最开始没有任何棋型时的，AI优先选取靠中心的位置。
 
     def reset(self):
         for y in range(self.len):
