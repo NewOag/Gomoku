@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="faf67912-21b2-45cc-9273-79b47d10f0b3" name="Default Changelist" comment="">
+    <list default="true" id="faf67912-21b2-45cc-9273-79b47d10f0b3" name="Default Changelist" comment="添加备注3">
+      <change afterPath="$PROJECT_DIR$/venv/ChessAI.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/test.py" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,23 +25,17 @@
   </component>
   <component name="ProjectId" id="1ci8YRwQqMGVk9bF3iTqjOOgJbO" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="ChangesTree.GroupingKeys" value="directory" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Git/bin/git.exe" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -107,28 +103,154 @@
       <workItem from="1591001000661" duration="1981000" />
       <workItem from="1591082078564" duration="12186000" />
       <workItem from="1591102410996" duration="516000" />
-      <workItem from="1591102942236" duration="502000" />
+      <workItem from="1591102942236" duration="3742000" />
+      <workItem from="1591151009949" duration="20152000" />
+      <workItem from="1591234326516" duration="6947000" />
+      <workItem from="1591337974010" duration="7513000" />
+      <workItem from="1591350288240" duration="496000" />
+      <workItem from="1591350837894" duration="9000" />
+      <workItem from="1591350938162" duration="206000" />
+      <workItem from="1591351442950" duration="35000" />
+      <workItem from="1591353067644" duration="473000" />
+      <workItem from="1591354327539" duration="1487000" />
+      <workItem from="1591362742223" duration="73000" />
+      <workItem from="1591364322126" duration="374000" />
+      <workItem from="1591364733836" duration="2830000" />
+      <workItem from="1591433793058" duration="2473000" />
     </task>
+    <task id="LOCAL-00001" summary="啥也不是">
+      <created>1591103465398</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1591103465398</updated>
+    </task>
+    <task id="LOCAL-00002" summary="添加备注">
+      <created>1591104287333</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1591104287333</updated>
+    </task>
+    <task id="LOCAL-00003" summary="添加备注2">
+      <created>1591106560473</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1591106560473</updated>
+    </task>
+    <task id="LOCAL-00004" summary="添加备注3">
+      <created>1591159887434</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1591159887434</updated>
+    </task>
+    <task id="LOCAL-00005" summary="添加备注4">
+      <created>1591172949889</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1591172949889</updated>
+    </task>
+    <task id="LOCAL-00006" summary="添加备注4">
+      <created>1591281465181</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1591281465181</updated>
+    </task>
+    <task id="LOCAL-00007" summary="添加备注5">
+      <created>1591367413784</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1591367413784</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="啥也不是" />
+    <MESSAGE value="添加备注" />
+    <MESSAGE value="添加备注2" />
+    <MESSAGE value="添加备注3" />
+    <MESSAGE value="添加备注4" />
+    <MESSAGE value="添加备注5" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加备注5" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="367" y="0" key="CommitChangelistDialog2" timestamp="1591367413204">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="367" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1591367413204" />
+    <state width="1493" height="177" key="GridCell.Tab.0.bottom" timestamp="1591436234830">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="177" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1591436234830" />
+    <state width="1493" height="177" key="GridCell.Tab.0.center" timestamp="1591436234830">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="177" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1591436234830" />
+    <state width="1493" height="177" key="GridCell.Tab.0.left" timestamp="1591436234830">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="177" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1591436234830" />
+    <state width="1493" height="177" key="GridCell.Tab.0.right" timestamp="1591436234830">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="177" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1591436234830" />
+    <state x="270" y="76" key="SettingsEditor" timestamp="1591364356018">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="270" y="76" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1591364356018" />
+    <state x="361" y="165" key="Vcs.Push.Dialog.v2" timestamp="1591367552161">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="361" y="165" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1591367552161" />
+    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1591366664491">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1591366664491" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Gomoku$test.coverage" NAME="test Coverage Results" MODIFIED="1591091010570" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv" />
-    <SUITE FILE_PATH="coverage/Gomoku$main.coverage" NAME="main Coverage Results" MODIFIED="1591091020798" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv" />
+    <SUITE FILE_PATH="coverage/Gomoku$main.coverage" NAME="main Coverage Results" MODIFIED="1591436234818" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv" />
+    <SUITE FILE_PATH="coverage/Gomoku$test.coverage" NAME="test Coverage Results" MODIFIED="1591366778743" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv" />
   </component>
 </project>
