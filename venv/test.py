@@ -1,9 +1,15 @@
-CHESS_TYPE_NUM=10
-chess_len=15
+len = 1
 
-pos_score = [[(7 - max(abs(x - 7), abs(y - 7))) for x in range(chess_len)] for y in range(chess_len)]
+record = [[[1, 1, 1, 1] for x in range(len)] for y in range(len)]
+print(record)
+for y in range(len):
+    for x in range(len):
+        for i in range(4):
+            record[y][x][i] = 0
 
-count = [[0 for x in range(CHESS_TYPE_NUM)] for i in range(2)]
-print(pos_score)
-print(pos_score[6])
-print(pos_score[6][5])
+for i in range(len(self.count)):
+    for j in range(len(count[0])):
+        count[i][j] = 0
+print(count)
+
+print(record)

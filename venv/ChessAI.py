@@ -33,6 +33,7 @@ class ChessAI():
         self.pos_score = [[(7 - max(abs(x - 7), abs(y - 7))) for x in range(chess_len)] for y in range(chess_len)]
         #给棋盘上每个位置设一个初始分数，越靠近棋盘中心，分数越高，用来在最开始没有任何棋型时的，AI优先选取靠中心的位置。
 
+    # 重置record数组和count数组
     def reset(self):
         for y in range(self.len):
             for x in range(self.len):
@@ -48,9 +49,9 @@ class ChessAI():
     def isWin(self, board, turn):
         return self.evaluate(board, turn, True)
 
-    # get all positions that is empty
+    # 获取棋盘所有空点
     def genmove(self, board, turn):
-        moves = []
+        moves = []#棋盘数组(位置得分，x坐标，y坐标）
         for y in range(self.len):
             for x in range(self.len):
                 if board[y][x] == 0:
@@ -74,7 +75,7 @@ class ChessAI():
                 bestmove = (max_score, x, y)
         return bestmove
 
-    def findBestChess(self, board, turn):
+    def findBestChess(self, board, turn):#AI的入口函数
         time1 = time.time()
         score, x, y = self.search(board, turn)
         time2 = time.time()
